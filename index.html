@@ -93,7 +93,7 @@ body{
 main{position:relative;z-index:1;width:100%;max-width:min(92vw,460px);display:flex;flex-direction:column;gap:18px;align-content:start;padding-top:calc(44px + 4vh)}
 main > *{min-width:0}
 .site-footer{position:relative;z-index:1;text-align:center;padding:30px 20px calc(26px + env(safe-area-inset-bottom,0px))}
-.site-footer p{font-size:13px;color:var(--muted)}
+.site-footer p{font-size:13px;color:rgba(255,255,255,.75);text-shadow:0 1px 3px rgba(0,0,0,.5),0 2px 14px rgba(0,0,0,.35)}
 
 .reveal{opacity:0;transform:translateY(22px) scale(.97);transition:opacity .55s ease-out,transform .75s cubic-bezier(.34,1.56,.64,1)}
 .reveal.in{opacity:1;transform:translateY(0) scale(1)}
@@ -262,7 +262,7 @@ h1{
   box-shadow:inset 0 1px 0 var(--edge);
 }
 .links{padding:4px 2px 0}
-.links h2{font-size:18px;font-weight:700;letter-spacing:-.02em;margin:0 6px 12px}
+.links h2{font-size:18px;font-weight:700;letter-spacing:-.02em;margin:0 6px 12px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55),0 2px 16px rgba(0,0,0,.4)}
 .linklist{display:flex;flex-direction:column;gap:12px}
 .linkbtn{
   display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:20px;
@@ -290,6 +290,22 @@ h1{
 .linkbtn:active{transform:scale(.97);transition-duration:.15s}
 .linkbtn:focus-visible{outline:3px solid var(--text);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.linkbtn,.chev{transition:none}}
+
+/* จอกว้างระดับคอม: ชื่อ/เกี่ยวกับฉันไปฝั่งซ้าย ช่องทางติดต่อไปฝั่งขวา — มือถือ/แท็บเล็ตยังเป็นคอลัมน์เดียวเหมือนเดิม */
+@media (min-width:860px){
+  main{
+    max-width:860px;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 320px;
+    grid-template-areas:"hero links" "about links";
+    align-items:start;
+    gap:18px 24px;
+  }
+  .hero{grid-area:hero}
+  .about{grid-area:about}
+  .links{grid-area:links}
+  .links h2{text-align:center}
+}
 
 .tag.typing::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-2px;background:currentColor;opacity:.6;animation:tagBlink .9s step-end infinite}
 @keyframes tagBlink{0%,49%{opacity:.6}50%,100%{opacity:0}}
